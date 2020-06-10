@@ -1,6 +1,16 @@
 # Prerequisites
 *.d
 
+
+# FOlder semaforos
+06.Semaforos/
+
+# Archivos de make
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
 # Object files
 *.o
 *.ko

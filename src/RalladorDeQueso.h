@@ -6,15 +6,13 @@
 class RalladorDeQueso : Trabajador {
 
     private:
-        Logger* logger;
-        int cantidadDePizzas;
 
     protected:
 
     public:
-        RalladorDeQueso(Logger* logger, int cantidad);
+        RalladorDeQueso(Logger* logger, int cantidad, Semaforo* semaforo);
         ~RalladorDeQueso();
-
+        virtual int realizarMiTrabajo();
 
 };
 #endif

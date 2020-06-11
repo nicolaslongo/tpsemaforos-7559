@@ -3,7 +3,9 @@
 
 
 # FOlder semaforos
-06.Semaforos/
+material_de_clases/
+# logfiles
+logfiles/
 
 # Archivos de make
 CMakeFiles/

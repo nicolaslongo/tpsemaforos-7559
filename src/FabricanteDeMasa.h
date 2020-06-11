@@ -6,14 +6,14 @@
 class FabricanteDeMasa : Trabajador {
 
     private:
-        Logger* logger;
-        int cantidadDePizzas;
 
     protected:
 
     public:
-        FabricanteDeMasa(Logger* logger, int cantidad);
+        FabricanteDeMasa(Logger* logger, int cantidad, Semaforo* semaforo);
         ~FabricanteDeMasa();
+
+        virtual int realizarMiTrabajo();
 
 
 };

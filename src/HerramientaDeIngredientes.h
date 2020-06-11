@@ -1,19 +1,18 @@
 #ifndef HERRAMIENTADEINGREDIENTES_H_
 #define HERRAMIENTADEINGREDIENTES_H_
 
-#include "../utils/Logger.h"
+#include "Trabajador.h"
 
-class HerramientaDeIngredientes {
+class HerramientaDeIngredientes : Trabajador {
 
     private:
-        Logger* logger;
 
     protected:
 
     public:
-        HerramientaDeIngredientes(Logger* logger);
+        HerramientaDeIngredientes(Logger* logger, int cantidad, Semaforo* semaforo);
         ~HerramientaDeIngredientes();
-
+        virtual int realizarMiTrabajo();
 
 };
 #endif

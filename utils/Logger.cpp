@@ -32,6 +32,12 @@ ssize_t Logger::writeToLogFile(const char* buffer, const ssize_t buffsize) const
 	return write(this->fd, buffer, buffsize);
 }
 
+ssize_t Logger::writeToLogFile(std::string string) {
+	const char* msg = string.c_str();
+	return writeToLogFile(msg, strlen(msg));
+}
+
+
 // que reciba un std::string y adentro de hace la magia de llamar a writeToLogFile común y chau
 // ssize_t Logger::writeToLogFile(const char* buffer, const ssize_t buffsize) const {
 // 	lseek(this->fd, 0, SEEK_END);

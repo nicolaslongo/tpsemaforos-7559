@@ -1,21 +1,28 @@
 #include "./utils/Logger.h"
-#include "./src/FabricanteDeMasa.h"
-#include "./src/HerramientaDeIngredientes.h"
-#include "./src/RalladorDeQueso.h"
+#include "./src/FabricaDePizzas.h"
+
+const std::string file = "/bin/bash";
 
 int main() {
 
-    int CANT_PIZZAS = 25;
+    int CANT_PIZZAS = 3;
     Logger* logger = new Logger();
+    std::vector<int> valoresIniciales {0, 0};
+    Semaforo* sem = new Semaforo(file, 2, valoresIniciales);
 
-    FabricanteDeMasa* fabricanteDeMasa = new FabricanteDeMasa(logger, CANT_PIZZAS);
-    // HerramientaDeIngredientes* herramientaDeIngredientes = new HerramientaDeIngredientes(logger);
-    RalladorDeQueso* ralladorDeQueso = new RalladorDeQueso(logger, CANT_PIZZAS);
-    
-    std::cout << "This is fine" << endl;
+    FabricaDePizzas* fabrica = new FabricaDePizzas(logger, CANT_PIZZAS, sem);
 
+    int res = fabrica->abrirLaFabrica();
+    if (res == CHILD_PROCESS) {
+        delete logger;
+        delete fabrica;
+        delete sem;
+        return 0;
+    }
+
+    std::cout << "This is fine. Parent Process" << endl;
     delete logger;
-    delete fabricanteDeMasa;
-    delete ralladorDeQueso;
+    delete fabrica;
+    delete sem;
     return 0;
 }

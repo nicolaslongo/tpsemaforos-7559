@@ -18,3 +18,14 @@ Nicolás Longo - 98271
 Si se quiere ejecutar el chequeo de memoria con valgrind:
 
 ```valgrind --leak-check=full --show-leak-kinds=all ./tpSemaforos```
+
+
+### Comandos para verificación del estado de los semaforos:
+
+Con este comando los listamos:
+
+```ipcs```
+
+Con este comando podemos borrarlo, utilizando el semid:
+
+```ipcrm -s ****```

@@ -18,14 +18,18 @@ int Horno::realizarMiTrabajo() {
 
     while( ! esHoraDeIrse() ) {
 
-        // espero a que haya pizzas en el horno!
-        sem->p(PIZZAS_EN_EL_HORNO);
-        // Horneo la pizza!!!
-        sleep(4);
-        this->cantidadDePizzasHechas++;
-        std::cout << "Horneé la pizza número " << this->cantidadDePizzasHechas 
-                <<  " y hay un espacio más!" << endl;
-        sem->v(ESPACIOS_DISPONIBLES_EN_EL_HORNO);
+        // espero a que haya pizzas en el horno
+        try {
+            sem->p(PIZZAS_EN_EL_HORNO);
+        } catch(std::string& mensaje) {
+            const char* msg = mensaje.c_str();
+            this->logger->lockLogger();
+            this->logger->writeToLogFile(msg, strlen(msg));
+            this->logger->unlockLogger();
+            exit(-1);
+        }
+
+        hornear();
         
     }
 
@@ -40,6 +44,32 @@ int Horno::realizarMiTrabajo() {
     sem->eliminar(PIZZAS_EN_EL_HORNO);
 
     return CHILD_PROCESS;
+}
+
+void Horno::hornear() {
+
+    int tiempo = tiempoDeTrabajo(this->cantidadDePizzasHechas);
+    sleep(4);
+    this->cantidadDePizzasHechas++;
+    try {
+        sem->v(ESPACIOS_DISPONIBLES_EN_EL_HORNO);
+    } catch(std::string& mensaje) {
+        const char* msg = mensaje.c_str();
+        this->logger->lockLogger();
+        this->logger->writeToLogFile(msg, strlen(msg));
+        this->logger->unlockLogger();
+        exit(-1);
+    }
+    std::cout << "Horneé la pizza número " << this->cantidadDePizzasHechas 
+            <<  " y hay un espacio más!" << endl;
+
+    std::string msg = "Horno: hornear la pizza " +
+        std::to_string(this->cantidadDePizzasHechas) 
+        + " me tomó " + std::to_string(tiempo) + " segundos.\n";
+    this->logger->lockLogger();
+    this->logger->writeToLogFile(msg);
+    this->logger->unlockLogger();
+
 }
 
 

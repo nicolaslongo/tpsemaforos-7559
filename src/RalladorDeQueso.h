@@ -6,6 +6,8 @@
 class RalladorDeQueso : Trabajador {
 
     private:
+        void rallarQueso();
+        void meterPizzaEnElHorno();
 
     protected:
 

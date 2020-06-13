@@ -6,7 +6,8 @@
 class HerramientaDeIngredientes : Trabajador {
 
     private:
-
+        void agregarIngredientes();
+        
     protected:
 
     public:

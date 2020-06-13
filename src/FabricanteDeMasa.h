@@ -6,7 +6,7 @@
 class FabricanteDeMasa : Trabajador {
 
     private:
-
+        void prepararMasa();
     protected:
 
     public:

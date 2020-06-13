@@ -23,9 +23,6 @@ int main() {
     std::cout << "This is fine. Parent Process" << endl;
     delete logger;
     delete fabrica;
-    // sem->isDone(PIZZAS_EN_EL_HORNO, 0);
-    // sem->isDone(ESPACIOS_DISPONIBLES_EN_EL_HORNO, 5);
-    // std::cout << "Elimino el semaforo " << endl;
     delete sem;
     return 0;
 }

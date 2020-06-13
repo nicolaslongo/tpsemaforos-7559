@@ -6,7 +6,7 @@
 class Horno : Trabajador {
 
     private:
-
+        void hornear();
     protected:
 
     public:

@@ -8,6 +8,9 @@ Trabajador::Trabajador(Logger* logger, int cantidad, Semaforo* semaforo) {
 
 }
 
+int Trabajador::tiempoDeTrabajo(unsigned int seed_number) {
+    return Random::getRandomNumber(seed_number);
+}
 
 bool Trabajador::esHoraDeIrse() {
     return (

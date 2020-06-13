@@ -11,8 +11,8 @@ Semaforo :: Semaforo ( const std::string& nombre, unsigned int initializer,
     for (int i = 0; i < cantidadDeSemaforos; i++) {
 
 		int valor = this->valoresIniciales.at(i);
-		std::cout << "Inicializando semaforo " << i << " en valor " 
-					<< valor << std::endl;
+		std::cout << "Inicializando semaforo " << i << " del archivo " 
+			<< std::to_string(initializer) << " en valor " << valor << std::endl;
 		this->inicializar(i, valor);
 
 	}

@@ -3,6 +3,7 @@
 
 #include "../utils/Logger.h"
 #include "../utils/Semaforo.h"
+#include "../utils/Random.h"
 #include "Constantes.h"
 #include <iostream>
 
@@ -18,14 +19,16 @@ class Trabajador {
         int cantidadDePizzasHechas;
         Semaforo* sem;
 
+        bool esHoraDeIrse();
+        int tiempoDeTrabajo(unsigned int seed_number);
+
+        virtual int realizarMiTrabajo() = 0;
        
     public:
 
         Trabajador(Logger* logger, int cantidadDePizzas, Semaforo* semaforo);
         virtual ~Trabajador();
-        bool esHoraDeIrse();
 
-        virtual int realizarMiTrabajo() = 0;
 
 };
 

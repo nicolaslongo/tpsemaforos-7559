@@ -4,7 +4,6 @@ Logger::Logger() {
 	
 	std::vector<int> valoresIniciales {1};
 	valoresIniciales.push_back(1);
-	std::cout << "Valor inicial es " << valoresIniciales.at(0) << endl;
 	this->semaforo = new Semaforo(FILE_FOLDER, (unsigned int) 'L', 1, valoresIniciales);
 
     time_t now = time(0);

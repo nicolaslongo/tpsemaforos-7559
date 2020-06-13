@@ -3,6 +3,13 @@
 FabricaDePizzas::FabricaDePizzas(Logger* logger, int cantidad, Semaforo* semaforo) {
 
     this->logger = logger;
+    std::string msg = "Bienvenidos a ésta Fabrica de Pizzas!\n";
+    this->logger->lockLogger();
+    this->logger->writeToLogFile(msg);
+    this->logger->unlockLogger();
+
+    std::cout << "Hoy fabricaremos " << cantidad << " pizzas." << endl;
+
     this->cantidadDePizzas = cantidad;
     this->sem = semaforo;
 
@@ -10,11 +17,7 @@ FabricaDePizzas::FabricaDePizzas(Logger* logger, int cantidad, Semaforo* semafor
     this->herramientaDeIngredientes = new HerramientaDeIngredientes(logger,
             cantidadDePizzas, sem);
     this->ralladorDeQueso = new RalladorDeQueso(logger, cantidadDePizzas, sem);
-
-    std::string msg = "Bienvenidos a ésta Fabrica de Pizzas!\n";
-    this->logger->lockLogger();
-    this->logger->writeToLogFile(msg);
-    this->logger->unlockLogger();
+    this->horno = new Horno(logger, cantidadDePizzas, sem);
 
 }
 
@@ -33,7 +36,7 @@ int FabricaDePizzas::abrirLaFabrica() {
 
     resultado = herramientaDeIngredientes->realizarMiTrabajo();
     if (resultado == CHILD_PROCESS) {
-        std::string msg = "Herramienta de herramientas huyendo.\n";
+        std::string msg = "Herramienta de ingredientes huyendo.\n";
         this->logger->lockLogger();
         this->logger->writeToLogFile(msg);
         this->logger->unlockLogger();
@@ -49,6 +52,18 @@ int FabricaDePizzas::abrirLaFabrica() {
         return resultado;
     }
 
+    resultado = horno->realizarMiTrabajo();
+    if (resultado == CHILD_PROCESS) {
+        std::string msg = "Horno cerrando.\nThis is it fellas!\n";
+        this->logger->lockLogger();
+        this->logger->writeToLogFile(msg);
+        this->logger->unlockLogger();
+        // cierro el semaforo del Logger, no queda nada por hacer!
+
+        this->logger->cerrarSemaforo();
+        return resultado;
+    }
+
     return PARENT_PROCESS;
 }
 
@@ -58,4 +73,5 @@ FabricaDePizzas:: ~FabricaDePizzas() {
     delete fabricanteDeMasa;
     delete herramientaDeIngredientes;
     delete ralladorDeQueso;
+    delete horno;
 }

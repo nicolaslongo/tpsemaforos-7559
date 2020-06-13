@@ -3,10 +3,10 @@
 FabricanteDeMasa::FabricanteDeMasa (Logger* logger, int cantidad, Semaforo* semaforo) :
     Trabajador (logger, cantidad, semaforo) {
 
-    std::cout << "FabricanteDeMasa: listo para trabajar" << endl;
-    // logger->lockLogger();
-    // logger->writeToLogFile("Soy el Fabricante de Masa, listo para trabajar");
-    // logger->unlockLogger();
+    std::string msg = "FabricanteDeMasa: listo para trabajar.\n";
+    this->logger->lockLogger();
+    this->logger->writeToLogFile(msg);
+    this->logger->unlockLogger();
 }
 
 int FabricanteDeMasa::realizarMiTrabajo() {
@@ -16,14 +16,25 @@ int FabricanteDeMasa::realizarMiTrabajo() {
         return PARENT_PROCESS;
     }
 
-    while(this->cantidadDePizzas != 0) {
+    while( ! esHoraDeIrse() ) {
 
         // fabricarMasa
-        sleep(3);
-        std::cout << "Masa fabricada" << endl;
-        this->cantidadDePizzas--;
-        sem->v(MASA_PREPARADA);
+        sleep(1);
+        this->cantidadDePizzasHechas++;
+        std::cout << "Masa fabricada pizza número " << this->cantidadDePizzasHechas << endl;
+        try {
+            sem->v(MASA_PREPARADA);
+        } catch(std::string& mensaje) {
+            const char* msg = mensaje.c_str();
+            this->logger->lockLogger();
+            this->logger->writeToLogFile(msg, strlen(msg));
+            this->logger->unlockLogger();
+            exit(-1);
+        }
     }
+
+    sem->isDone(MASA_PREPARADA, 0);
+    std::cout << "Semaforo MASA_PREPARADA es 0" << endl;
 
     return CHILD_PROCESS;
 }

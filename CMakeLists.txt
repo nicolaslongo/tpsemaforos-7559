@@ -9,4 +9,5 @@ src/Trabajador.cpp
 src/FabricaDePizzas.cpp
 src/FabricanteDeMasa.cpp
 src/HerramientaDeIngredientes.cpp
-src/RalladorDeQueso.cpp)
+src/RalladorDeQueso.cpp
+src/Horno.cpp)

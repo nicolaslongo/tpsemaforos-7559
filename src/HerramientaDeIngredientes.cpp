@@ -3,8 +3,10 @@
 HerramientaDeIngredientes::HerramientaDeIngredientes(Logger* logger, int cantidad, Semaforo* semaforo) :
     Trabajador (logger, cantidad, semaforo) {
 
-    std::cout << "HerramientaDeIngredientes: listo para trabajar" << endl;
-
+    std::string msg = "HerramientaDeIngredientes: listo para trabajar.\n";
+    this->logger->lockLogger();
+    this->logger->writeToLogFile(msg);
+    this->logger->unlockLogger();
 }
 
 int HerramientaDeIngredientes::realizarMiTrabajo() {
@@ -14,18 +16,20 @@ int HerramientaDeIngredientes::realizarMiTrabajo() {
         return PARENT_PROCESS;
     }
 
-    while(this->cantidadDePizzas != 0) {
+    while( ! esHoraDeIrse() ) {
 
         // espero a que haya masa!
         sem->p(MASA_PREPARADA);
         // preparo y agrego los ingredientes
         sleep(1);
-        std::cout << "Agregados los ingredientes a la pizza" << endl;
+        this->cantidadDePizzasHechas++;
+        std::cout << "Agregados los ingredientes a la pizza número " << 
+                this->cantidadDePizzasHechas << endl;
         sem->v(INGREDIENTES_AGREGADOS);
-        this->cantidadDePizzas--;
     }
 
-    sem->eliminar(MASA_PREPARADA);
+    sem->isDone(INGREDIENTES_AGREGADOS, 0);
+    std::cout << "Semaforo INGREDIENTES_AGREGADOS es 0" << endl;
 
     return CHILD_PROCESS;
 }

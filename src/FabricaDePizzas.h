@@ -5,6 +5,7 @@
 #include "FabricanteDeMasa.h"
 #include "HerramientaDeIngredientes.h"
 #include "RalladorDeQueso.h"
+#include "Horno.h"
 
 #include <sched.h>
 using namespace std;
@@ -20,6 +21,7 @@ class FabricaDePizzas {
         FabricanteDeMasa* fabricanteDeMasa;
         RalladorDeQueso* ralladorDeQueso;
         HerramientaDeIngredientes* herramientaDeIngredientes;
+        Horno* horno;
 
     protected:
 

@@ -3,8 +3,10 @@
 RalladorDeQueso::RalladorDeQueso(Logger* logger, int cantidad, Semaforo* semaforo) :
     Trabajador (logger, cantidad, semaforo) {
 
-    std::cout << "RalladorDeQueso: listo para trabajar" << endl;
-
+    std::string msg = "RalladorDeQueso: listo para trabajar.\n";
+    this->logger->lockLogger();
+    this->logger->writeToLogFile(msg);
+    this->logger->unlockLogger();
 }
 
 int RalladorDeQueso::realizarMiTrabajo() {
@@ -14,17 +16,31 @@ int RalladorDeQueso::realizarMiTrabajo() {
         return PARENT_PROCESS;
     }
 
-    while(this->cantidadDePizzas != 0) {
+    while( ! esHoraDeIrse() ) {
 
-        // espero a que haya masa!
-        sem->p(INGREDIENTES_AGREGADOS);
+        // espero a que estén los ingredientes listos!
+        int resultado = sem->p(INGREDIENTES_AGREGADOS);
+        if (resultado != 0) {
+            std::cout << "dio distinto de cero" << endl;
+        }
         // rallar el queso
         sleep(1);
-        std::cout << "Rallé el queso de la pizza" << endl;
-        this->cantidadDePizzas--;
+        this->cantidadDePizzasHechas++;
+        std::cout << "Rallé el queso de la pizza número " << 
+                this->cantidadDePizzasHechas << endl;
+        // si hay espacio en el horno, rallo el queso
+        resultado = sem->p(ESPACIOS_DISPONIBLES_EN_EL_HORNO);
+        if (resultado != 0) {
+            std::cout << "dio distinto de cero" << endl;
+        }
+        resultado = sem->v(PIZZAS_EN_EL_HORNO);
+        if (resultado != 0) {
+            std::cout << "dio distinto de cero" << endl;
+        }
     }
+    sem->isDone(PIZZAS_EN_EL_HORNO, 0);
+    std::cout << "Semaforo PIZZAS_EN_EL_HORNO es 0" << endl;
 
-    sem->eliminar(INGREDIENTES_AGREGADOS);
 
     return CHILD_PROCESS;
 }

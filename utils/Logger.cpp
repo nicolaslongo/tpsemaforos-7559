@@ -1,12 +1,11 @@
 #include "Logger.h"
 
 Logger::Logger() {
-
-	this->nombre = nombre;
-	this->fl.l_type = F_WRLCK;
-	this->fl.l_whence = SEEK_SET;
-	this->fl.l_start = 0;
-	this->fl.l_len = 0;
+	
+	std::vector<int> valoresIniciales {1};
+	valoresIniciales.push_back(1);
+	std::cout << "Valor inicial es " << valoresIniciales.at(0) << endl;
+	this->semaforo = new Semaforo(FILE_FOLDER, (unsigned int) 'L', 1, valoresIniciales);
 
     time_t now = time(0);
     std::string dt = string(ctime(&now));
@@ -17,13 +16,25 @@ Logger::Logger() {
 }
 
 int Logger::lockLogger() {
-	this->fl.l_type = F_WRLCK;
-	return fcntl ( this->fd,F_SETLKW,&(this->fl) );
+	int resultado;
+	try {
+		resultado = this->semaforo->p(this->numeroSemaforo);
+	} catch(std::string& mensaje){
+		std::cout << "Error lockeando logger : " << mensaje << endl;
+		resultado = -1;
+	}
+	return resultado;
 }
 
 int Logger::unlockLogger() {
-	this->fl.l_type = F_UNLCK;
-	return fcntl ( this->fd,F_SETLK,&(this->fl) );
+	int resultado;
+	try {
+		resultado = this->semaforo->v(this->numeroSemaforo);
+	} catch(std::string& mensaje){
+		std::cout << "Error lockeando logger : " << mensaje << endl;
+		resultado = -1;
+	}
+	return resultado;
 }
 
 
@@ -37,18 +48,11 @@ ssize_t Logger::writeToLogFile(std::string string) {
 	return writeToLogFile(msg, strlen(msg));
 }
 
-
-// que reciba un std::string y adentro de hace la magia de llamar a writeToLogFile común y chau
-// ssize_t Logger::writeToLogFile(const char* buffer, const ssize_t buffsize) const {
-// 	lseek(this->fd, 0, SEEK_END);
-// 	return write(this->fd, buffer, buffsize);
-// }
-
-void Logger::closeFileInThisScope() {
-	close(this->fd);
+void Logger::cerrarSemaforo() {
+	semaforo->eliminar(this->numeroSemaforo);
 }
-
 
 Logger::~Logger() {
 	close(this->fd);
+	delete semaforo;
 }

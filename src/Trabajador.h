@@ -14,7 +14,8 @@ class Trabajador {
         
     protected:
         Logger* logger;
-        int cantidadDePizzas;
+        int cantidadDePizzasPedidas;
+        int cantidadDePizzasHechas;
         Semaforo* sem;
 
        

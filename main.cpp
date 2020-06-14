@@ -3,9 +3,9 @@
 
 const std::string file = "/bin/bash";
 
-int main() {
+int main(int argc, char *argv[]) {
 
-    int CANT_PIZZAS = 15;
+    int CANT_PIZZAS = atoi(argv[argc-1]);
     Logger* logger = new Logger();
     std::vector<int> valoresIniciales {0, 0, 0, 5};
     Semaforo* sem = new Semaforo(file, (unsigned int) 'M', 4, valoresIniciales);

@@ -22,7 +22,7 @@ int FabricanteDeMasa::realizarMiTrabajo() {
     }
 
     sem->isDone(MASA_PREPARADA, 0);
-    std::cout << "Semaforo MASA_PREPARADA es 0" << endl;
+    // std::cout << "Semaforo MASA_PREPARADA es 0" << endl;
 
     return CHILD_PROCESS;
 }

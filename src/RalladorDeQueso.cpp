@@ -30,12 +30,23 @@ int RalladorDeQueso::realizarMiTrabajo() {
         }
         // rallar el queso
         rallarQueso();
+
+        try {
+            sem->p(ESPACIOS_DISPONIBLES_EN_EL_HORNO);
+        } catch(std::string& mensaje) {
+            const char* msg = mensaje.c_str();
+            this->logger->lockLogger();
+            this->logger->writeToLogFile(msg, strlen(msg));
+            this->logger->unlockLogger();
+            exit(-1);
+        }
+
         meterPizzaEnElHorno();
 
     }
 
     sem->isDone(PIZZAS_EN_EL_HORNO, 0);
-    std::cout << "Semaforo PIZZAS_EN_EL_HORNO es 0" << endl;
+    // std::cout << "Semaforo PIZZAS_EN_EL_HORNO es 0" << endl;
 
     return CHILD_PROCESS;
 }
@@ -43,7 +54,7 @@ int RalladorDeQueso::realizarMiTrabajo() {
 void RalladorDeQueso::rallarQueso() {
 
     int tiempo = tiempoDeTrabajo(this->cantidadDePizzasHechas);
-    sleep(1);
+    sleep(tiempo);
     this->cantidadDePizzasHechas++;
     std::cout << "Rallé el queso de la pizza número " << 
             this->cantidadDePizzasHechas << endl;
@@ -59,17 +70,6 @@ void RalladorDeQueso::rallarQueso() {
 
 void RalladorDeQueso::meterPizzaEnElHorno() {
 
-    try {
-        sem->p(ESPACIOS_DISPONIBLES_EN_EL_HORNO);
-    } catch(std::string& mensaje) {
-        const char* msg = mensaje.c_str();
-        this->logger->lockLogger();
-        this->logger->writeToLogFile(msg, strlen(msg));
-        this->logger->unlockLogger();
-        exit(-1);
-    }
-
-    // meto la pizza al horno!
     try {
         sem->v(PIZZAS_EN_EL_HORNO);
     } catch(std::string& mensaje) {

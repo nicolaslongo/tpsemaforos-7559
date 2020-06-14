@@ -34,7 +34,7 @@ int HerramientaDeIngredientes::realizarMiTrabajo() {
     }
 
     sem->isDone(INGREDIENTES_AGREGADOS, 0);
-    std::cout << "Semaforo INGREDIENTES_AGREGADOS es 0" << endl;
+    // std::cout << "Semaforo INGREDIENTES_AGREGADOS es 0" << endl;
 
     return CHILD_PROCESS;
 }
@@ -42,7 +42,7 @@ int HerramientaDeIngredientes::realizarMiTrabajo() {
 void HerramientaDeIngredientes::agregarIngredientes() {
     
     int tiempo = tiempoDeTrabajo(this->cantidadDePizzasHechas);
-    sleep(1);
+    sleep(tiempo);
     this->cantidadDePizzasHechas++;
     try {
         sem->v(INGREDIENTES_AGREGADOS);

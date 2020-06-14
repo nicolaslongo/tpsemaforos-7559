@@ -48,8 +48,8 @@ int Horno::realizarMiTrabajo() {
 
 void Horno::hornear() {
 
-    int tiempo = tiempoDeTrabajo(this->cantidadDePizzasHechas);
-    sleep(4);
+    int tiempo = TIEMPO_MINIMO_DE_HORNO + tiempoDeTrabajo(this->cantidadDePizzasHechas);
+    sleep(tiempo);
     this->cantidadDePizzasHechas++;
     try {
         sem->v(ESPACIOS_DISPONIBLES_EN_EL_HORNO);

@@ -1,0 +1,125 @@
+Masa fabricada pizza número 1
+Masa fabricada pizza número 2
+Agregados los ingredientes a la pizza número 1
+Masa fabricada pizza número 3
+Masa fabricada pizza número 4
+Agregados los ingredientes a la pizza número 2
+Agregados los ingredientes a la pizza número 3
+Rallé el queso de la pizza número 1
+Masa fabricada pizza número 5
+Metí la pizza número 1 en el horno
+Agregados los ingredientes a la pizza número 4
+Masa fabricada pizza número 6
+Rallé el queso de la pizza número 2
+Metí la pizza número 2 en el horno
+Agregados los ingredientes a la pizza número 5
+Masa fabricada pizza número 7
+Rallé el queso de la pizza número 3
+Agregados los ingredientes a la pizza número 6
+Metí la pizza número 3 en el horno
+Horneé la pizza número 1 y hay un espacio más!
+Masa fabricada pizza número 8
+Rallé el queso de la pizza número 4
+Metí la pizza número 4 en el horno
+Agregados los ingredientes a la pizza número 7
+Rallé el queso de la pizza número 5
+Metí la pizza número 5 en el horno
+Masa fabricada pizza número 9
+Agregados los ingredientes a la pizza número 8
+Rallé el queso de la pizza número 6
+Metí la pizza número 6 en el horno
+Masa fabricada pizza número 10
+Rallé el queso de la pizza número 7
+Masa fabricada pizza número 11
+Horneé la pizza número 2 y hay un espacio más!
+Metí la pizza número 7 en el horno
+Agregados los ingredientes a la pizza número 9
+Masa fabricada pizza número 12
+Masa fabricada pizza número 13
+Rallé el queso de la pizza número 8
+Horneé la pizza número 3 y hay un espacio más!
+Metí la pizza número 8 en el horno
+Agregados los ingredientes a la pizza número 10
+Masa fabricada pizza número 14
+Masa fabricada pizza número 15
+Rallé el queso de la pizza número 9
+Agregados los ingredientes a la pizza número 11
+Agregados los ingredientes a la pizza número 12
+Masa fabricada pizza número 16
+Masa fabricada pizza número 17
+Horneé la pizza número 4 y hay un espacio más!
+Metí la pizza número 9 en el horno
+Agregados los ingredientes a la pizza número 13
+Masa fabricada pizza número 18
+Agregados los ingredientes a la pizza número 14
+Rallé el queso de la pizza número 10
+Masa fabricada pizza número 19
+Agregados los ingredientes a la pizza número 15
+Horneé la pizza número 5 y hay un espacio más!
+Metí la pizza número 10 en el horno
+Masa fabricada pizza número 20
+Agregados los ingredientes a la pizza número 16
+Rallé el queso de la pizza número 11
+Agregados los ingredientes a la pizza número 17
+Agregados los ingredientes a la pizza número 18
+Masa fabricada pizza número 21
+Horneé la pizza número 6 y hay un espacio más!
+Metí la pizza número 11 en el horno
+Rallé el queso de la pizza número 12
+Agregados los ingredientes a la pizza número 19
+Masa fabricada pizza número 22
+Horneé la pizza número 7 y hay un espacio más!
+Metí la pizza número 12 en el horno
+Rallé el queso de la pizza número 13
+Agregados los ingredientes a la pizza número 20
+Masa fabricada pizza número 23
+Agregados los ingredientes a la pizza número 21
+Masa fabricada pizza número 24
+Horneé la pizza número 8 y hay un espacio más!
+Metí la pizza número 13 en el horno
+Masa fabricada pizza número 25
+Rallé el queso de la pizza número 14
+Agregados los ingredientes a la pizza número 22
+Agregados los ingredientes a la pizza número 23
+Agregados los ingredientes a la pizza número 24
+Horneé la pizza número 9 y hay un espacio más!
+Metí la pizza número 14 en el horno
+Agregados los ingredientes a la pizza número 25
+Rallé el queso de la pizza número 15
+Horneé la pizza número 10 y hay un espacio más!
+Metí la pizza número 15 en el horno
+Rallé el queso de la pizza número 16
+Horneé la pizza número 11 y hay un espacio más!
+Metí la pizza número 16 en el horno
+Rallé el queso de la pizza número 17
+Horneé la pizza número 12 y hay un espacio más!
+Metí la pizza número 17 en el horno
+Rallé el queso de la pizza número 18
+Horneé la pizza número 13 y hay un espacio más!
+Metí la pizza número 18 en el horno
+Rallé el queso de la pizza número 19
+Horneé la pizza número 14 y hay un espacio más!
+Metí la pizza número 19 en el horno
+Rallé el queso de la pizza número 20
+Horneé la pizza número 15 y hay un espacio más!
+Metí la pizza número 20 en el horno
+Rallé el queso de la pizza número 21
+Horneé la pizza número 16 y hay un espacio más!
+Metí la pizza número 21 en el horno
+Rallé el queso de la pizza número 22
+Horneé la pizza número 17 y hay un espacio más!
+Metí la pizza número 22 en el horno
+Rallé el queso de la pizza número 23
+Horneé la pizza número 18 y hay un espacio más!
+Metí la pizza número 23 en el horno
+Rallé el queso de la pizza número 24
+Horneé la pizza número 19 y hay un espacio más!
+Metí la pizza número 24 en el horno
+Rallé el queso de la pizza número 25
+Horneé la pizza número 20 y hay un espacio más!
+Metí la pizza número 25 en el horno
+Horneé la pizza número 21 y hay un espacio más!
+Horneé la pizza número 22 y hay un espacio más!
+Horneé la pizza número 23 y hay un espacio más!
+Horneé la pizza número 24 y hay un espacio más!
+Horneé la pizza número 25 y hay un espacio más!

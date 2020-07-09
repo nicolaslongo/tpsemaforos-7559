@@ -2,6 +2,8 @@
 Trabajo Práctico Especial: Semaforos de la materia 75.59 - Técnicas de Programación Concurrentes
 Nicolás Longo - 98271
 
+En la carpeta informe se encuentra todo lo relativo al informe (incluidos los diagramas y los ejemplos de ejecuciones, con sus respectivos logfiles)
+En la carpeta TpSemaforos se puede acceder al código y desde ahí compilar, probar, etc.
 
 # Documentación
 
